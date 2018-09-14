@@ -1,0 +1,38 @@
+<% content_for :cover do %>
+  <section class="module bg-dark-30 about-page-header" data-background="assets/images/about_bg.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h1 class="module-title font-alt mb-0">Forms</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h4 class="font-alt mb-0">トピックの投稿</h4>
+        <hr class="divider-w mt-10 mb-20">
+          <%= form_for(@topic) do |f| %>
+            <div class="form-group">
+              <%= f.label :title, 'タイトル', class: 'sr-only' %>
+              <%= f.text_field :title, class: 'form-control', placeholder: 'タイトルを書く' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :content, '内容', class: 'sr-only' %>
+              <%= f.text_area :content, class: 'form-control', placeholder: '本文を書く', :rows => "4" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :picture, '画像', class: 'sr-only' %>
+              <%= f.file_field :picture, id: :topic_picture %>
+              <%= f.hidden_field :picture_cache %>
+            </div>
+            <%= f.submit 'トピックを投稿する', class: 'btn btn-round btn-d' %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>

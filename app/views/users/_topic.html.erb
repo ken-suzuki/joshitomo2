@@ -1,0 +1,27 @@
+<% if topics.present? %>
+  <% topics.each do |topic| %>
+    <div class="tab-pane" id="reviews">
+      <div class="comments reviews">
+        <div class="comment clearfix">
+          <div class="comment-avatar">
+            <%=  link_to image_tag(topic.picture, size: 100), topic_path(topic) %>
+          </div>
+          <div class="comment-content clearfix">
+            <div class="comment-author font-alt">
+              <%= topic.title %>
+            </div>
+            <div class="comment-body">
+              <p><%= topic.content %></p>
+            </div>
+            <div class="comment-meta font-alt">
+              <%= topic.created_at.strftime('%Y/%m/%d %H:%M') %> - <span><%= @ranking_counts[topic.id] %>コメント</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%#= paginate @topics %>
+<% else %>
+  <p class="text-center" style="margin-top:30px;" >投稿トピックはありません</p>
+<% end %>

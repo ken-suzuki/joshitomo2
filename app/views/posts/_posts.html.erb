@@ -1,0 +1,24 @@
+<div class="comments">
+  <h4 class="comment-title font-alt">There are <%= @ranking_counts[@topic.id] %> comments</h4>
+  <div class="comment clearfix">
+    <% posts.each do |post| %>
+      <div class="comment-avatar"><%=  link_to image_tag(post.user.image), user_path(post.user) %></div>
+        <div class="comment-content clearfix">
+          <div class="comment-author font-alt"><%= link_to post.user.name, user_path(post.user) %></div>
+          <div class="comment-body">
+            <p><%= post.comment %></p>
+          </div>
+          <div class="comment-meta font-alt">
+            <%= post.created_at.strftime('%Y/%m/%d %H:%M') %> - 
+            <a href="#">Reply</a>
+            <% if current_user == post.user %>
+              <%= link_to " - 削除", post, method: :delete, data:{confirm:"コメントを削除しますか?"}, remote: true  %>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+    
+    <%#= paginate posts %>
+    
+  </div>
+</div>

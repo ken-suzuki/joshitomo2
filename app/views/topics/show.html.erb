@@ -1,0 +1,51 @@
+<section class="module-small">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="post">
+          <div class="post-thumbnail">
+            <%= image_tag @topic.picture %>
+          </div>
+          <div class="post-header font-alt">
+            <h1 class="post-title">
+              <%= @topic.title %>
+            </h1>
+            <div class="post-meta">
+              <%= link_to @topic.user.name, user_path(@topic.user) %> | <%= @topic.created_at.strftime('%Y/%m/%d %H:%M') %> | <%= @ranking_counts[@topic.id] %> Comments | <%= link_to '一覧に戻る', topics_path %>
+              <% if current_user == @topic.user %>
+                <%= link_to ' | 編集', edit_topic_path(@topic) %>
+                <%= link_to ' | 削除', @topic, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+              <% end %>
+            </div>
+            <%= render 'favorites/favorite_button', topic: @topic  %>
+          </div>
+          <div class="post-entry">
+            <p><%= @topic.content %></p>
+          </div>
+        </div>
+          
+        <%= render 'posts/posts', posts: @posts %>
+          
+        <div class="comment-form">
+          <h4 class="comment-form-title font-alt">コメントを投稿する</h4>
+          <%= form_for(@post, remote: true) do |f| %>
+            <div class="form-group">
+              <%= f.label :comment, 'コメント', class: 'sr-only' %>
+              <%= f.text_area :comment, class: 'form-control', placeholder: 'コメントを書く', :rows => "4" %>
+            </div>
+            <%#= <div class="form-group"> %>
+              <%#= f.label :photo, '画像', class: 'sr-only' %>
+              <%#= f.file_field :photo, id: :comment_photo %>
+              <%#= f.hidden_field :photo_cache %>
+            <%#= </div> %>
+            <%= f.hidden_field :parent_id %>
+            <%= f.submit 'コメントを投稿する', class: 'btn btn-round btn-d' %>
+          <% end %>
+        </div>
+      </div>
+      
+      <%= render 'layouts/sidebar' %>
+      
+    </div>
+  </div>
+</section>

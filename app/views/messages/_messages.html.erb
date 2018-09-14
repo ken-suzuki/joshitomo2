@@ -1,0 +1,26 @@
+<div class="comments">
+  <% @entries.drop(1).each do |e| %>
+  <h4 class="comment-title font-alt"><%= e.user.name%>さんとのメッセージ</h4>
+  <% end %>
+  <div class="comment clearfix">
+    <% if @messages.present? %>
+      <% @messages.each do |m| %>
+        <div class="comment-avatar"><%=  link_to image_tag(m.user.image), user_path(m.user) %></div>
+        <div class="comment-content clearfix">
+          <div class="comment-author font-alt"><%= link_to m.user.name, user_path(m.user) %></div>
+          <div class="comment-body">
+            <p><%= m.content %></p>
+          </div>
+          <div class="comment-meta font-alt">
+            <%= m.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center">メッセージはまだありません</p>
+    <% end %>
+    
+    <%#= paginate posts %>
+    
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
+  <div class="widget">
+
+      <%= link_to new_topic_path, class: 'btn btn-round btn-d btn-lg'  do %>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        トピックを投稿する
+      <% end %>
+    
+  </div>
+  
+  <div class="widget">
+    <h5 class="widget-title font-alt">人気トピック</h5>
+      <ul class="widget-posts">
+        <% if @ranking_topics.present? %>
+          <% @ranking_topics.each_with_index do |topic, index| %>
+            <li class="clearfix">
+              <div class="widget-posts-image">
+                <%=  link_to image_tag(topic.picture, size: 100), topic_path(topic) %>
+              </div>
+              <div class="widget-posts-body">
+                <div class="widget-posts-title">
+                  <%= topic.title %>
+                </div>
+                <div class="widget-posts-meta">
+                  <%= @ranking_counts[topic.id] %>コメント
+                </div>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+  
+  <div class="widget">
+    <h5 class="widget-title font-alt">新着トピック</h5>
+      <ul class="widget-posts">
+        <% if @new_topics.present? %>
+          <% @new_topics.each do |topic| %>
+            <li class="clearfix">
+              <div class="widget-posts-image">
+                <%=  link_to image_tag(topic.picture, size: 100), topic_path(topic) %>
+              </div>
+              <div class="widget-posts-body">
+                <div class="widget-posts-title">
+                  <%= topic.title %>
+                </div>
+                <div class="widget-posts-meta">
+                  <%= topic.created_at.strftime('%Y/%m/%d %H:%M') %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+</div>

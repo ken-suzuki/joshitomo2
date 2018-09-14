@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>女子トモ</title>
+    <%= csrf_meta_tags %>
+    
+    <!-- Favicons-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--  
+    Stylesheets
+    =============================================
+    
+    -->
+    <!-- Default stylesheets-->
+    <%= stylesheet_link_tag  'lib/bootstrap/dist/css/bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    
+    <%= stylesheet_link_tag  'lib/animate.css/animate', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/components-font-awesome/css/font-awesome.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/et-line-font/et-line-font', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/flexslider/flexslider', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/owl.carousel/dist/assets/owl.carousel.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/owl.carousel/dist/assets/owl.theme.default.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/magnific-popup/dist/magnific-popup', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'lib/simple-text-rotator/simpletextrotator', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Main stylesheet and color file-->
+    <%= stylesheet_link_tag  'css/style', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'css/colors/default', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap CSS-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!-- app/assets/stylesheets -->
+    <%#= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- app/assets/javascripts-->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrap JavaScript-->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    
+    <!--  
+    JavaScripts
+    =============================================
+    -->
+    <script src="assets/lib/jquery/dist/jquery.js"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/lib/wow/dist/wow.js"></script>
+    <script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+    <script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
+    <script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="assets/lib/flexslider/jquery.flexslider.js"></script>
+    <script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="assets/lib/smoothscroll.js"></script>
+    <script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+  </head>
+  
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <%= render 'layouts/navbar' %>
+      <div class="main">
+        <%= yield :cover %>
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+      </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<% content_for :cover do %>
+  <section class="module bg-dark-30 about-page-header" data-background="assets/images/about_bg.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h1 class="module-title font-alt mb-0">Forms</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h4 class="font-alt mb-0">新規登録</h4>
+        <hr class="divider-w mt-10 mb-20">
+        <%= form_for(@user) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, 'お名前', class: 'sr-only' %>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'お名前' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, 'メールアドレス', class: 'sr-only' %>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'メールアドレス' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, 'パスワード', class: 'sr-only' %>
+            <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, 'パスワード（確認）', class: 'sr-only' %>
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワード（確認）' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :age, '年齢', class: 'sr-only' %>
+            <%= f.select :age, [["12歳以下", "12歳以下"],
+            ["13", "13"], 
+            ["14", "14"], 
+            ["15", "15"], 
+            ["16", "16"], 
+            ["17", "17"], 
+            ["18", "18"], 
+            ["19", "19"], 
+            ["20", "20"], 
+            ["21", "21"], 
+            ["22", "22"], 
+            ["23", "23"], 
+            ["24", "24"], 
+            ["25", "25"], 
+            ["26", "26"], 
+            ["27", "27"], 
+            ["28", "28"], 
+            ["29", "29"], 
+            ["30", "30"], 
+            ["31", "31"], 
+            ["32", "32"], 
+            ["33", "33"], 
+            ["34", "34"], 
+            ["35", "35"], 
+            ["36", "36"], 
+            ["37", "37"], 
+            ["38", "38"], 
+            ["39", "39"], 
+            ["40", "40"], 
+            ["41", "41"], 
+            ["42", "42"], 
+            ["43", "43"], 
+            ["44", "44"], 
+            ["45", "45"], 
+            ["46", "46"], 
+            ["47", "47"], 
+            ["48", "48"], 
+            ["49", "49"], 
+            ["50", "50"], 
+            ["51", "51"], 
+            ["52", "52"], 
+            ["53", "53"], 
+            ["54", "54"], 
+            ["55", "55"], 
+            ["56", "56"], 
+            ["57", "57"], 
+            ["58", "58"], 
+            ["59", "59"], 
+            ["60", "60"], 
+            ["61", "61"], 
+            ["62", "62"], 
+            ["63", "63"], 
+            ["64", "64"], 
+            ["65歳以上", "65歳以上"]] , class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :live, '住まい', class: 'sr-only' %>
+            <%= f.select :live, [["北海道", "北海道"], 
+            ["青森県", "青森県"], 
+            ["岩手県", "岩手県"], 
+            ["宮城県", "宮城県"], 
+            ["秋田県", "秋田県"], 
+            ["山形県", "山形県"], 
+            ["福島県", "福島県"], 
+            ["茨城県", "茨城県"], 
+            ["栃木県", "栃木県"], 
+            ["群馬県", "群馬県"], 
+            ["埼玉県", "埼玉県"], 
+            ["千葉県", "千葉県"], 
+            ["東京都", "東京都"], 
+            ["神奈川県", "神奈川県"], 
+            ["新潟県", "新潟県"], 
+            ["富山県", "富山県"], 
+            ["石川県", "石川県"], 
+            ["福井県", "福井県"], 
+            ["山梨県", "山梨県"], 
+            ["長野県", "長野県"], 
+            ["岐阜県", "岐阜県"], 
+            ["静岡県", "静岡県"], 
+            ["愛知県", "愛知県"], 
+            ["三重県", "三重県"], 
+            ["滋賀県", "滋賀県"], 
+            ["京都府", "京都府"], 
+            ["大阪府", "大阪府"], 
+            ["兵庫県", "兵庫県"], 
+            ["奈良県", "奈良県"], 
+            ["和歌山県", "和歌山県"], 
+            ["鳥取県", "鳥取県"], 
+            ["島根県", "島根県"], 
+            ["岡山県", "岡山県"], 
+            ["広島県", "広島県"], 
+            ["山口県", "山口県"], 
+            ["徳島県", "徳島県"], 
+            ["香川県", "香川県"], 
+            ["愛媛県", "愛媛県"], 
+            ["高知県", "高知県"], 
+            ["福岡県", "福岡県"], 
+            ["佐賀県", "佐賀県"], 
+            ["長崎県", "長崎県"], 
+            ["熊本県", "熊本県"], 
+            ["大分県", "大分県"], 
+            ["宮崎県", "宮崎県"], 
+            ["鹿児島県", "鹿児島県"], 
+            ["沖縄県", "沖縄県"], 
+            ["海外", "海外"]] , class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :hobby, '趣味', class: 'sr-only' %>
+            <%= f.select :hobby, [["映画", "映画"], 
+            ["ドラマ", "ドラマ"], 
+            ["アニメ", "アニメ"], 
+            ["YouTube", "YouTube"], 
+            ["ジャニーズ", "ジャニーズ"], 
+            ["韓流", "韓流"], 
+            ["漫画", "漫画"], 
+            ["読書", "読書"], 
+            ["ゲーム", "ゲーム"], 
+            ["カメラ", "カメラ"], 
+            ["旅行", "旅行"], 
+            ["ツーリング", "ツーリング"], 
+            ["ドライブ", "ドライブ"], 
+            ["ダンス", "ダンス"], 
+            ["水泳", "水泳"], 
+            ["エクササイズ", "エクササイズ"], 
+            ["スポーツ", "スポーツ"], 
+            ["料理", "料理"], 
+            ["ピアノ", "ピアノ"], 
+            ["ギター", "ギター"], 
+            ["カラオケ", "カラオケ"], 
+            ["音楽", "音楽"], 
+            ["手芸", "手芸"], 
+            ["絵画", "絵画"], 
+            ["ペット", "ペット"], 
+            ["ブログ", "ブログ"], 
+            ["SNS", "SNS"], 
+            ["ファッション", "ファッション"], 
+            ["コスプレ", "コスプレ"], 
+            ["BL", "BL"], 
+            ["その他", "その他"]] , class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :image, '画像', class: 'sr-only' %>
+            <%= f.file_field :image, id: :user_image %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :pr, '自己紹介', class: 'sr-only' %>
+            <%= f.text_area :pr, class: 'form-control', placeholder: '自己紹介', :rows => "7" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.submit '登録する', class: 'btn btn-round btn-g' %>
+          </div>
+          
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

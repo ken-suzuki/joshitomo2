@@ -1,0 +1,129 @@
+<% content_for :cover do %>
+<section class="module bg-dark-30 about-page-header" data-background="assets/images/about_bg.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h1 class="module-title font-alt mb-0">Tabs &amp; Accordions</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h4 class="font-alt mb-0">Topics</h4>
+        <hr class="divider-w mt-10 mb-20">
+        <div role="tabpanel">
+          <% if @topics %>
+            <ul class="nav nav-tabs font-alt" role="tablist">
+              <li class="<%= 'active' if current_page?(topics_path(@topic)) %>"><%= link_to topics_path(@topic) do %>人気トピック <span class="badge"><%#= @count_topics %></span><% end %></li>
+              <li class="<%= 'active' if current_page?(newtopics_topic_path(@topic)) %>"><%= link_to newtopics_topic_path(@topic) do %>新着トピック <span class="badge"><%#= @count_topics %></span><% end %></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="support">
+                <%= render 'topics', topics: @topics %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="comment-form">
+          <h4 class="comment-form-title font-alt">トピックの投稿</h4>
+          <%= form_for(@topic) do |f| %>
+            <div class="form-group">
+              <%= f.label :title, 'タイトル', class: 'sr-only' %>
+              <%= f.text_field :title, class: 'form-control', placeholder: 'タイトルを書く' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :content, '内容', class: 'sr-only' %>
+              <%= f.text_area :content, class: 'form-control', placeholder: '本文を書く', :rows => "4" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :picture, '画像', class: 'sr-only' %>
+              <%= f.file_field :picture, id: :topic_picture %>
+              <%= f.hidden_field :picture_cache %>
+            </div>
+            <%= f.submit 'トピックを投稿する', class: 'btn btn-round btn-d' %>
+          <% end %>
+        </div>
+      </div>
+      
+      
+      <%# サイドバー %>
+      <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
+        <div class="widget">
+          <form role="form">
+            <div class="search-box">
+                <%= form_tag(topics_path, method: "get") do %>
+                  <div class="input-group">
+                    
+                  	<%= text_field_tag :title, params[:title], class: 'form-control', placeholder: "トピックを検索" %>
+                  	<span class="input-group-btn">
+                      <%= button_tag( class: "btn btn-default") do %>
+                        <%= content_tag(:i, '', class: 'fa fa-search') %>
+                      <% end %>
+                      
+                  	  <%#= submit_tag '検索', class: 'btn btn-default' %>
+                  	  
+                  	</span>
+                  </div>
+                <% end %>
+            </div>
+          </form>
+        </div>
+        
+        <div class="widget">
+          <h5 class="widget-title font-alt">人気トピック</h5>
+            <ul class="widget-posts">
+              <% if @ranking_topics.present? %>
+                <% @ranking_topics.each_with_index do |topic, index| %>
+                  <li class="clearfix">
+                    <div class="widget-posts-image">
+                      <%=  link_to image_tag(topic.picture, size: 100), topic_path(topic) %>
+                    </div>
+                    <div class="widget-posts-body">
+                      <div class="widget-posts-title">
+                        <%= topic.title %>
+                      </div>
+                      <div class="widget-posts-meta">
+                        <%= @ranking_counts[topic.id] %>コメント
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+        </div>
+        
+        <div class="widget">
+          <h5 class="widget-title font-alt">新着トピック</h5>
+            <ul class="widget-posts">
+              <% if @new_topics.present? %>
+                <% @new_topics.each do |topic| %>
+                  <li class="clearfix">
+                    <div class="widget-posts-image">
+                      <%=  link_to image_tag(topic.picture, size: 100), topic_path(topic) %>
+                    </div>
+                    <div class="widget-posts-body">
+                      <div class="widget-posts-title">
+                        <%= topic.title %>
+                      </div>
+                      <div class="widget-posts-meta">
+                        <%= topic.created_at.strftime('%Y/%m/%d %H:%M') %>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+        </div>
+        
+      </div>
+      <%# サイドバーここまで %>
+      
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+<section class="module">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-sm-6 mb-sm-40">
+        <div id="gallery-user">
+        <%= image_tag(@user.image, { :class => "gallery" }) %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="product-title font-alt"><%= @user.name %></h1>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span><a class="open-tab section-scroll" href="#reviews">-2customer reviews</a>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <div class="price font-alt"><span class="amount"><%= @user.age %> / <%= @user.live %> / <%= @user.hobby %></span></div>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <%= render 'rooms/room_button' %>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <div class="description">
+              <p><%= @user.pr %></p>
+              <%= render 'relationships/follow_button', user: @user %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-70">
+      <div class="col-sm-12">
+        <ul class="nav nav-tabs font-alt" role="tablist">
+          <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>トピック <span class="badge"><%= @count_topics %></span><% end %></li>
+          <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>お気に入り <span class="badge"><%= @count_followings %></span><% end %></li>
+          <% if @user == current_user %>
+            <li class="<%= 'active' if current_page?(entries_user_path(@user)) %>"><%= link_to entries_user_path(@user) do %>メッセージ <span class="badge"><%= @count_entries %></span><% end %></li>
+          <% end %>
+          <%# <li><a href="#reviews" data-toggle="tab"><span class="icon-tools-2"></span>コメント (2)</a></li> %>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="description">
+          <%= render 'entry', entries: @entries %>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>

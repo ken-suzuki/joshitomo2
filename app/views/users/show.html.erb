@@ -1,0 +1,96 @@
+<section class="module">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-sm-6 mb-sm-40">
+        <div id="gallery-user">
+        <%= image_tag(@user.image, { :class => "gallery" }) %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="product-title font-alt"><%= @user.name %></h1>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            
+            <% if @count_followers == 0 %>
+              <span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span>
+            <% elsif @count_followers < 19 %>
+              <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span> - <%= @count_followers %>フォロワー
+            <% elsif @count_followers < 29 %>
+              <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span> - <%= @count_followers %>フォロワー
+            <% elsif @count_followers < 39 %>
+              <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span><span><i class="fa fa-star star-off"></i></span> - <%= @count_followers %>フォロワー
+            <% elsif @count_followers < 49 %>
+              <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span> - <%= @count_followers %>フォロワー
+            <% else %>
+              <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span> - <%= @count_followers %>フォロワー
+            <% end %>
+            
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <div class="price font-alt"><span class="amount"><%= @user.age %> / <%= @user.live %> / <%= @user.hobby %></span></div>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <%= render 'rooms/room_button' %>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <div class="description">
+              <p><%= @user.pr %></p>
+              <%= render 'relationships/follow_button', user: @user %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-70">
+      <div class="col-sm-12">
+          
+        <ul class="nav nav-tabs font-alt" role="tablist">
+          <li class="active"><a href="#post" data-toggle="tab">投稿トピック</a></li>
+          <li><a href="#favoriting" data-toggle="tab">登録トピック</a></li>
+          <li><a href="#following" data-toggle="tab">フォロー</a></li>
+          <li><a href="#follower" data-toggle="tab">フォロワー</a></li>
+          <% if @user == current_user %>
+          <li><a href="#message" data-toggle="tab">メッセージ</a></li>
+          <% end %>
+        </ul>
+        
+        <div class="tab-content">
+          <div class="tab-pane active" id="post">
+            <%= render 'topic', topics: @topics %>
+          </div>
+          
+          <div class="tab-pane" id="favoriting">
+            <%= render 'favorite', topics: @favoritings %>
+          </div>
+          
+          <div class="tab-pane" id="following">
+              <%= render 'follow', users: @followings %>
+          </div>
+          
+          <div class="tab-pane" id="follower">
+              <%= render 'follower', users: @followers %>
+          </div>
+          
+          <div class="tab-pane" id="message">
+              <%= render 'entry', entries: @entries %>
+          </div>
+            
+        </div>
+          
+      </div>
+    </div>
+    
+  </div>
+</section>
