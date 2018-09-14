@@ -56,3 +56,7 @@ gem 'carrierwave', '~> 1.1'
 gem 'kaminari'
 gem 'jquery-ui-rails'
 gem 'counter_culture', '~> 1.8'
+
+group :production do
+  gem 'pg', '0.21.0'
+end
