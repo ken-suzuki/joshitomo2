@@ -16,6 +16,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.assets.initialize_on_precompile = false
+
 module Joshikuru
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -24,6 +26,5 @@ module Joshikuru
     
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
-    config.assets.enabled = true
   end
 end
